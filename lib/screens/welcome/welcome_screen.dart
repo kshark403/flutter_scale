@@ -22,10 +22,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           children: [
             Text('ยินดีต้อนรับ'),
             ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/login');
-                },
-                child: const Text('เข้าสู่ระบบ'),
+              onPressed: () {
+                Navigator.pushNamed(context, '/login');
+              },
+              child: const Text('เข้าสู่ระบบ'),
+            )
           ],
         ),
       ),
