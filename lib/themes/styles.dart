@@ -7,17 +7,16 @@ class AppTheme {
   // Custom text theme
   static final customTextTheme = const TextTheme(
     bodyMedium: TextStyle(
-      fontFamily: 'IMBlexSansThai',
       fontSize: 16,
     ),
     bodyLarge: TextStyle(
-      fontFamily: 'IMBlexSansThai',
       fontSize: 24,
     ),
   );
 
   // light theme
   static final ThemeData lightTheme = ThemeData(
+    fontFamily: 'IBMPlexSansThai',
     textTheme: customTextTheme,
     primaryColor: primary,
     primaryColorDark: primaryDark,
@@ -41,6 +40,7 @@ class AppTheme {
 
   // Dark theme
   static final ThemeData darkTheme = ThemeData(
+    fontFamily: 'IBMPlexSansThai',
     textTheme: customTextTheme,
     primaryColor: primary,
     primaryColorDark: primaryDark,
