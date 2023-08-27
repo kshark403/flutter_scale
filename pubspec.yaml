@@ -39,6 +39,9 @@ dependencies:
   # for create intro slider
   onboarding_intro_screen: ^0.0.8
 
+  # for http request
+  http: ^1.1.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

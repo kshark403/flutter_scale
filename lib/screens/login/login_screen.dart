@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_scale/services/rest_api.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -86,13 +89,22 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: MediaQuery.of(context).size.width * 0.6,
                     height: 50,
                     child: ElevatedButton(
-                      onPressed: () {
+                      onPressed: () async {
                         // ตรวจสอบค่าจาก form
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
 
-                          print('Username: $_username');
-                          print('Password: $_password');
+                          // print('Username: $_username');
+                          // print('Password: $_password');
+                          // เรียกใช้งาน API login
+                          var response = await CallAPI().loginAPI({
+                            'username': _username,
+                            'password': _password,
+                          });
+
+                          var body = jsonDecode(response.body);
+
+                          print(body);
                         }
                       },
                       style: ElevatedButton.styleFrom(
