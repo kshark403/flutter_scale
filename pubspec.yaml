@@ -42,6 +42,12 @@ dependencies:
   # for http request
   http: ^1.1.0
 
+  # Network Connectivity
+  connectivity_plus: ^4.0.2
+
+  # Shared Preference
+  shared_preferences: ^2.2.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

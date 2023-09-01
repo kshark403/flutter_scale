@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_scale/utils/constants.dart';
+import 'package:flutter_scale/utils/utility.dart';
 import 'package:http/http.dart' as http;
 
 class CallAPI {
@@ -12,11 +13,18 @@ class CallAPI {
 
   // Login API Method
   loginAPI(data) async {
-    return await http.post(
-      // Uri.parse('http://localhost:8000/api/login'),
-      Uri.parse('${baseURLAPI}login'),
-      body: jsonEncode(data),
-      headers: _setHeaders(),
-    );
+    // check network connection
+    if (await Utility.checkNetwork() == '') {
+      return http.Response(
+          jsonEncode({'status': 'error', 'message': 'No Internet Connection'}),
+          200);
+    } else {
+      return await http.post(
+        // Uri.parse('http://localhost:8000/api/login'),
+        Uri.parse('${baseURLAPI}login'),
+        body: jsonEncode(data),
+        headers: _setHeaders(),
+      );
+    }
   }
 }

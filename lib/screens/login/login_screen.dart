@@ -1,9 +1,10 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, use_build_context_synchronously
 
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_scale/services/rest_api.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -104,7 +105,35 @@ class _LoginScreenState extends State<LoginScreen> {
 
                           var body = jsonDecode(response.body);
 
-                          print(body);
+                          // print(body);
+
+                          if (body['status'] == 'success') {
+                            // Create shared preference object
+                            SharedPreferences prefs =
+                                await SharedPreferences.getInstance();
+
+                            // Save user data to shared preference
+                            prefs.setString('userID', body['data']['id']);
+                            prefs.setString(
+                                'userName', body['data']['username']);
+                            prefs.setString(
+                                'fullName',
+                                body['data']['name'] +
+                                    ' ' +
+                                    body['data']['surname']);
+                            prefs.setString(
+                                'imgProfile', body['data']['img_profile']);
+                            prefs.setString('email', body['data']['email']);
+                            prefs.setInt('step', 2);
+
+                            Navigator.pushReplacementNamed(
+                                context, '/dashboard');
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Center(child: Text(body['message'])),
+                              backgroundColor: Colors.red,
+                            ));
+                          }
                         }
                       },
                       style: ElevatedButton.styleFrom(
