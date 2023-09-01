@@ -1,6 +1,7 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_interpolation_to_compose_strings
 
 import 'package:flutter/material.dart';
+import 'package:flutter_scale/main.dart';
 
 class ProductsScreen extends StatefulWidget {
   const ProductsScreen({super.key});
@@ -42,7 +43,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
         itemBuilder: (context, index) {
           return ListTile(
             onTap: () {
-              print('item $index clicked');
+              // print('item $index clicked');
+              logger.d('Item ' + index.toString() + ' clicked');
             },
             title: Text('Item $index'),
           );
@@ -58,7 +60,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
       itemBuilder: (context, index) {
         return InkWell(
           onTap: () {
-            print('Item $index clicked');
+            // print('Item $index clicked');
+            logger.d('Item ' + index.toString() + ' clicked');
           },
           child: Container(
             decoration: BoxDecoration(

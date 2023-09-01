@@ -4,6 +4,7 @@ import 'package:flutter_scale/screens/drawermenu/about/about_screen.dart';
 import 'package:flutter_scale/screens/drawermenu/contact/contact_screen.dart';
 import 'package:flutter_scale/screens/drawermenu/info/info_screen.dart';
 import 'package:flutter_scale/screens/login/login_screen.dart';
+import 'package:flutter_scale/screens/newsdetail/news_detail_screen.dart';
 import 'package:flutter_scale/screens/welcome/welcome_screen.dart';
 
 // App Router Class
@@ -15,6 +16,7 @@ class AppRouter {
   static const String info = '/info';
   static const String about = '/about';
   static const String contact = '/contact';
+  static const String newsdetail = '/newsdetail';
 
   // Router Map
   static Map<String, WidgetBuilder> routes = {
@@ -24,5 +26,6 @@ class AppRouter {
     info: (context) => const InfoScreen(),
     about: (context) => const AboutScreen(),
     contact: (context) => const ContactScreen(),
+    newsdetail: (context) => const NewsDetailScreen(),
   };
 }
